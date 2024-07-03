@@ -35,8 +35,8 @@ def get_ape_info(apeID):
 	data['owner'] = owner
 
 	tokenURI = contract.functions.tokenURI(apeID).call()
-	pinata_url = 'https://gateway.pinata.cloud/ipfs/'
-	tokenURI = tokenURI.replace('ipfs://', pinata_url)
+	#pinata_url = 'https://gateway.pinata.cloud/ipfs/'
+	#tokenURI = tokenURI.replace('ipfs://', pinata_url)
 
 	response = requests.get(tokenURI)
 	data_json = response.json()
