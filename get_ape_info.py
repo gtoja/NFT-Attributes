@@ -41,8 +41,8 @@ def get_ape_info(apeID):
 	response = requests.get(tokenURI)
 	data_json = response.json()
 
-	data['image'] = data_json['image']
-	data['eyes'] = data_json['eyes']	
+	data['image'] = data_json.get('image', '')
+	data['eyes'] = data_json.get('eyes','')
 
 	assert isinstance(data,dict), f'get_ape_info{apeID} should return a dict' 
 	assert all( [a in data.keys() for a in ['owner','image','eyes']] ), f"return value should include the keys 'owner','image' and 'eyes'"
