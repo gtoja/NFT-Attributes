@@ -6,7 +6,7 @@ import json
 import time
 
 bayc_address = "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
-contract_address = Web3.toChecksumAddress(bayc_address)
+contract_address = Web3.to_checksum_address(bayc_address)
 
 #You will need the ABI to connect to the contract
 #The file 'abi.json' has the ABI for the bored ape contract
@@ -39,7 +39,7 @@ def get_ape_info(apeID):
 
 	response = requests.get(tokenURI)
 	data_json = response.json()
-	
+
 	data['image'] = data_json['image']
 	data['eyes'] = data_json['eyes']	
 
