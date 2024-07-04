@@ -32,17 +32,17 @@ def get_ape_info(apeID):
 	#YOUR CODE HERE
 
 	owner = contract.functions.ownerOf(apeID).call()
-	data['owner'] = owner
+	data['owner'] =owner
 
 	tokenURI = contract.functions.tokenURI(apeID).call()
 	pinata_url = 'https://gateway.pinata.cloud/ipfs/'
-	tokenURI = tokenURI.replace('ipfs://', pinata_url)
+	tokenURI =tokenURI.replace('ipfs://', pinata_url)
 
 	response = requests.get(tokenURI)
 	data_json = response.json()
 
 	data['image'] = data_json.get('image')
-	data['eyes'] = data_json.get('eyes')
+	data['eyes'] = data_json.get('Eyes')
 
 	assert isinstance(data,dict), f'get_ape_info{apeID} should return a dict' 
 	assert all( [a in data.keys() for a in ['owner','image','eyes']] ), f"return value should include the keys 'owner','image' and 'eyes'"
