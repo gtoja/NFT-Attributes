@@ -42,7 +42,11 @@ def get_ape_info(apeID):
 	data_json = response.json()
 
 	data['image'] = data_json.get('image')
-	data['eyes'] = data_json.get('Eyes')
+	attributes = response_json.get('attributes',[])
+	for feat in attributes:
+		if feat.get('trait_type') == 'Eyes':
+			data['eyes'] = feat.get('value')
+			break
 
 	assert isinstance(data,dict), f'get_ape_info{apeID} should return a dict' 
 	assert all( [a in data.keys() for a in ['owner','image','eyes']] ), f"return value should include the keys 'owner','image' and 'eyes'"
