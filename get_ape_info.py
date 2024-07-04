@@ -42,7 +42,7 @@ def get_ape_info(apeID):
 	data_json = response.json()
 
 	data['image'] = data_json.get('image')
-	attributes = response_json.get('attributes',[])
+	attributes = data_json.get('attributes',[])
 	for feat in attributes:
 		if feat.get('trait_type') == 'Eyes':
 			data['eyes'] = feat.get('value')
